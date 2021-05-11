@@ -1,0 +1,13 @@
+.heading {
+	margin-top: 30px;
+	border: 2px solid white;
+	color: white;
+	background-color: var(--maroon);
+	width: 320px;
+	text-align: center;
+	font-size: 36px;
+}
+
+.instructions-box {
+	background-color: var(--base);
+}

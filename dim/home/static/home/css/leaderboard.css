@@ -1,0 +1,24 @@
+.heading {
+	margin-top: 30px;
+	border: 2px solid white;
+	color: white;
+	background-color: var(--maroon);
+	width: 320px;
+	text-align: center;
+	font-size: 36px;
+}
+
+.table {
+	background-color: var(--base);
+	text-align: center;
+}
+
+th {
+	height: 72px;
+}
+
+td {
+	word-wrap: break-word;
+	max-width: 200px;
+	height: 56px;
+}

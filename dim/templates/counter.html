@@ -1,0 +1,48 @@
+<div class="m-0 p-3 text-center text-maroon countdown" id="countdown"></div>
+
+<form action="{% url 'questions' %}" method="get" id="counter-form" class="m-0"></form>
+
+<script type="text/javascript" src="https://MomentJS.com/downloads/moment.js"></script>
+<script type="text/javascript" src="https://MomentJS.com/downloads/moment-timezone-with-data.js"></script>
+
+<script>
+	// const all = moment.tz.names();
+	// console.log(all);
+
+	const finishing_time = moment({{ request.user.get_finishing_time | safe }}).tz("Asia/Calcutta");
+	
+	function countdownTimer() {
+		let current_time = moment.tz("Asia/Calcutta");
+		const difference = finishing_time - current_time;
+	const countdown = document.getElementById('countdown');
+
+	let remaining = "Time's up!";
+	let round = {{user.current_round}}
+
+	{% if request.user.is_countdown_active %}
+	countdown.style.display = "block";
+	if (difference > 0) {
+		const parts = {
+			hours: Math.floor((difference / 1000 / 60) / 60),
+			minutes: Math.floor((difference / 1000 / 60) % 60),
+			seconds: Math.floor((difference / 1000) % 60),
+		};
+		remaining = Object.keys(parts).map(part => {
+			return `${parts[part]} ${part}`;
+		}).join(" ");
+		remaining = `Round ${round} ends in ${remaining}`;
+
+		countdown.innerHTML = remaining;
+	}
+	else {
+		const form = document.getElementById("counter-form");
+		form.submit()
+	}
+	{% else %}
+	countdown.style.display = "none";
+	{% endif %}
+	}
+
+	countdownTimer();
+	setInterval(countdownTimer, 1000);
+</script>

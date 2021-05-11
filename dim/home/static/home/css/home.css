@@ -1,0 +1,22 @@
+body {
+	background-color: var(--maroon);
+}
+
+.image-box {
+	width: 100%;
+}
+
+.heading {
+	color: var(--base);
+	font-size: 72px;
+}
+
+.underline {
+	width: 300px;
+	border: 2px solid var(--base);
+}
+
+.sub-heading {
+	color: antiquewhite;
+	font-style: italic;
+}

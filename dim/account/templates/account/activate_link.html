@@ -1,0 +1,6 @@
+{% autoescape off %}
+    Hi {{user.username}},
+    Click the given link to activate your Concourse account.
+    <br>
+    Link: http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

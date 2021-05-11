@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+<title>Login</title>
+<link rel="stylesheet" href="{% static 'account/css/auth.css'%}">
+<script src="{% static 'account/js/auth.js'%}"></script>
+{% endblock %}
+
+{% block content %}
+<section id="auth-body">
+    <div class="container my-5 center-mx auth-box">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="container auth-box-heading">
+                <p class="logo mb-5">Concourse</p>
+                Welcome back! 👋
+            </div>
+            {% for field in form %}
+            {{field}}
+            {% endfor %}
+            <button type="submit" class="btn my-4 button-1">Log in</button>
+        </form>
+        <div class="container p-0 pb-4 auth-box-footer text-center">
+            <a href="{% url 'get_email'%}" class="font-weight-bold">Forgot your Password??</a><br>
+            Don't have an account yet?&emsp13;<a href="{% url 'register'%}"
+                class="font-weight-bold">Sign up</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

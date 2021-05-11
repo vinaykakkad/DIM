@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Leaderboard</title>
+<link rel="stylesheet" href="{% static 'home/css/leaderboard.css'%}">
+{% endblock %}
+
+{% block content %}
+<section id="leaderboard-body">
+	<div class="container flex-center full">
+		<div class="container bg-white my-5">
+			<div class="mx-auto shadow flex-center heading">
+				LEADERBOARD
+			</div>
+			<table class="mt-5 table table-striped table-hover text-dark">
+				<tr>
+					<th> <b>Firstname</b> </th>
+					<th> <b>Points</b> </th>
+				</tr>
+				{% for user in users %}
+				<tr class="table-row">
+					<td>
+						{% if forloop.counter == 1 %}
+						<img src="{% static 'images/gold.svg'%}" height="28px" class="m-0 p-0">
+						{% elif forloop.counter == 2 %}
+						<img src="{% static 'images/silver.svg'%}" height="28px" class="m-0 p-0">
+						{% elif forloop.counter == 3 %}
+						<img src="{% static 'images/bronze.svg'%}" height="28px" class="m-0 p-0">
+						{% endif %}
+						{{user.username}}
+					</td>
+					<td>{{user.points}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</section>
+{% endblock %}

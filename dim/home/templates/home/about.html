@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+	<title>About</title>
+	<link rel="stylesheet" href="{% static 'home/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+	<section id="about-body">			
+		<div class="container border my-5 flex-center full about-box">
+			<div class="container">
+				<div class="my-5 mx-auto media-box">
+					<video src="{% static 'images/tmc.mp4'%}" width="100%" controls></video>
+				</div>
+				<p class="my-5 text-dark">
+					We say, “Multitasking is the new trend. We nurture it”. Our mission is to productively engage students by conducting various events and impart them all-round knowledge of management and allied fields. We started as a club conducting activities related to business and financial management, but now we have widened our scope and focus more on multi-tasking and interdisciplinarity. Management is an integral part of every person’s life and it is a continuous process that starts from getting up till calling the day off while going to bed at night. We, as a club, believe that every person is a manager and has management skills within; just the skills need to be enhanced to make one’s life smoother, productive and balanced. Hence, the club encourages students from not only commerce and management background, but also from biology, technology and other backgrounds.
+					<br><br>
+					TMC Concourse is our complete home production. We have neatly curated this platform inorder to deliver a conducive brainstorming experience. This portal inflicts upon the idea that brainstorming is the intrinsic necessity of life, be it for any task or profession. The short and interesting games and leagues created by us here give you a fine brainstorming and mindful experience, along with the element of fun. The games and leagues give you an opportunity to apply what you have heard or read from academic textbooks, journals, articles, social media, lectures, webinars, news, etc. Knowledge is always enhanced when applied. Along with the motivation of acing the leagues, one gets to self-evaluate thy knowledge and thy skills. Of course, the team games; they give you the most productive time with your friends or peers. By and large, all the games and leagues on this platform will help you out in a longer run in your personal or professional life. So, why not? Play to enhance!
+					<br><br>
+					The name ‘Concourse’ has a great significance and involved a long thought process inorder to associate it with our platform. Concourse at one hand is a coined term for gaming platforms which are available for masses to seek quality entertainment. On the other hand, it also designates a place of rustic innocence along with simple and quiet pleasure. At TMC Concourse, we are passionate about delivering worthy entertainment with a wide scope of learning and growing in the form of games and leagues. You are sure to have a great time, playing, brainstorming and enhancing yourself; of course, with utmost pleasure. 
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

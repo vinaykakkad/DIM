@@ -1,0 +1,44 @@
+{% load static %}
+
+<footer>
+	<div class="container pt-4 footer-box">
+		<div class="row w-100">
+			<div class="col-md-4 mt-5 text-left">
+				<p class="footer-headings">Quick Links</p>
+				<a href="{% url 'home' %}">Home</a></br>
+				<a href="{% url 'instructions' %}">Instructions</a></br>
+				<a href="{% url 'about' %}">About</a></br>
+				{% if request.user.is_authenticated %}
+				<a href="#">Rounds</a></br>
+				<a href="#">Logout</a></br>
+				{% else %}
+				<a href="#">Login</a></br>
+				{% endif %}
+			</div>
+			<div class="col-md-4 mt-5 text-left">
+				<p class="footer-headings">&lt; / > by:</pre>
+				</p>
+				<a href="#">Samkit Kundalia</a></br>
+				<a href="#">Vinay Kakkad</a></br>
+			</div>
+			<div class="col-md-4 mt-5 text-left">
+				<p class="footer-headings">Credits:</p>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet molestiae excepturi
+					natus quia accusamus inventore ad nam provident! Molestias excepturi odit
+					possimus vitae eaque quis sapiente enim, asperiores optio at!</p>
+			</div>
+			<div class="mt-5 line"></div>
+			<hr>
+			<div class="row pr-4 w-100">
+				<div class="ml-0 mr-auto"><small>© Concourse</small></div>
+				<div class="ml-auto float-right">
+					<h5>
+						<a href="#"><i class="fab fa-youtube"></i></a>&emsp14;
+						<a href="#"><i class="fas fa-envelope"></i></a>&emsp14;
+						<a href="#"><i class="fab fa-twitter"></i></a>&emsp14;
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

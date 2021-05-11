@@ -1,0 +1,45 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg sticky-top nav-class">
+
+    <a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
+        <h3><img src="{% static 'images/logo.png'%}" alt="CONCOURSE" class="logo"></h3>
+    </a>
+
+    <button class="custom-toggler navbar-toggler p-0" type="button" data-toggle="collapse"
+        data-target="#nav_list" aria-controls="nav_list" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav_list">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link nav-link-class" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'instructions' %}">Instructions</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Leaderboard</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'about' %}">About</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Logout</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Rounds</a>
+            </li>
+            {% else %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Login</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Register</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
