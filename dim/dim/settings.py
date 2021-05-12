@@ -15,7 +15,7 @@ import os
 from pathlib import Path
 
 from decouple import config
-
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,10 +45,13 @@ INSTALLED_APPS = [
 
     # customs apps
     'home',
+    'forum',
     'account',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,6 +149,11 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
 
+# Authentication configurations
+AUTH_USER_MODEL = 'account.Account'
+LOGIN_URL = '/login/'
+
+
 #For CKEDITOR
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
@@ -166,3 +174,7 @@ CKEDITOR_CONFIGS = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())

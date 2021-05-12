@@ -103,14 +103,10 @@ class LoginView(View):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        print(username, password)
-
         try:
             user = authenticate(request, username=username, password=password)
         except Exception as identifier:
             user = None
-
-        print(user)
 
         if user:
             if not user.is_activated:
@@ -122,7 +118,7 @@ class LoginView(View):
         else:
             messages.error(request, 'Invalid Username or Password.')
             return redirect('login')
-
+            
 
 class ActivateAccountView(View):
     """

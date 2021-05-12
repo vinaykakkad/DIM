@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>forum</title>
+<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="forum-body">
+    <div class="container py-5 main">
+        <div class="row mx-auto">
+            <div class="col-lg-3 mb-5">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="mb-3 mx-auto forum-headings">Filter</h2>
+                        <hr>
+                        <form action="{% url 'forum' %}" method="GET" class="form-group">
+                            <label for="title">By title:</label>
+                            <input type="text" name="title" class="form-control mb-4 fields">
+                            <label for="tags">By tags:</label>
+                            <select name="tags" class="custom-select form-control fields" multiple>
+                                {% for tag in tags %}
+                                <option value="{{tag}}">{{tag}}</option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <small>*"Ctrl + Click" to select multiple</small>
+                            <button class="btn mx-auto mt-4 forum-button" type="submit">Filter</button>
+                            {% if filtered %}
+                            <a href="{% url 'forum' %}?clear=1">
+                                <button type="button" class="btn btn-md mx-3 forum-button">Clear</button>
+                            </a>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                {% for post in page_data %}
+                <div class="container card mb-4 shadow">
+                    <div class="card-body">
+                        <a href="{% url 'post_detail' post.slug %}" class="forum-headings">
+                            <h2 class="mb-0" >{{ post.title }}
+                        </a>
+                        </h2>
+                        <p class="card-text small date">{{ post.created_on}}
+                        </p>
+                        <p class="card-text ">{{post.description }}</p>
+                        <p>
+                            {% for tag in post.tags.all %}
+                            <a href="{% url 'forum' %}?tags={{tag}}" class="tag">#{{tag}}</a>
+                            {% if forloop.counter != post.tags.all|length %}&emsp14; {% endif %}
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'pagination.html' %}
+{%endblock%}
