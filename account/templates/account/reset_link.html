@@ -1,0 +1,6 @@
+{% autoescape off %}
+Hi {{user.username}},
+Click the given link to reset your account password.
+<br>
+Link: http://{{domain}}{% url 'set_password' username64=encoded_username token=token %}
+{% endautoescape %}

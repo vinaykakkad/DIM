@@ -1,0 +1,15 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if forloop.counter == messages|length %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="alert alert-danger m-0">
+                    <strong>Error!</strong> {{message}}
+                </div>
+            {% else %}
+                <div class="alert alert-success m-0">
+                    <strong>Success!</strong> {{message}}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
