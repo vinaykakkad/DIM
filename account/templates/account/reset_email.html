@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>PCW-Reset</title>
+<link rel="stylesheet" href="{% static 'account/css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="auth-body">
+    <div class="container mx-auto p-5 my-5 auth-box">
+        <div class="auth-box-heading">Reset Password 🔐</div>
+        <form action="{% url 'get_email' %}" method="POST">
+            {% csrf_token %}
+            <input type="email" name="email" class="fields form-control" placeholder="Email"
+                required>
+            <p class="small text-muted">Enter your email to get reset link</p>
+            <button type="submit" class="btn mt-3 button-1">Submit</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

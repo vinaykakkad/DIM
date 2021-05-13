@@ -1,0 +1,36 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg sticky-top nav-class">
+
+    <a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
+        <h3><img src="{% static 'images/logo.png'%}" alt="DogeIN" class="logo"></h3>
+    </a>
+
+    <button class="custom-toggler navbar-toggler p-0" type="button" data-toggle="collapse"
+        data-target="#nav_list" aria-controls="nav_list" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav_list">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'forum' %}">Forum</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="https://one-one-chat-3686f.web.app/">Chat</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="#">Jobs</a>
+            </li>
+            {% else %}
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'register' %}">Register</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
