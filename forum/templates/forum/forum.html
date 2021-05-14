@@ -4,18 +4,20 @@
 {% block head %}
 <title>forum</title>
 <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 {% endblock %}
 
 {% block content %}
 <section id="forum-body">
-    <div class="container py-5 main"> 
+    <div class="container py-5 main">
         <div class="row mx-auto">
             <div class="col-lg-3 mb-5">
                 <div class="card shadow">
                     <div class="card-body">
                         <h2 class="mb-3 mx-auto fw-bold text-first">Filter</h2>
                         <hr>
-                        <form action="{% url 'forum' %}" method="GET" class="form-group">
+                        <form action="{% url 'forum' %}" method="GET" class="form-group" id="filter-form">
                             <label for="title">By title:</label>
                             <input type="text" name="title" class="form-control mb-4 fields">
                             <label for="tags">By tags:</label>
@@ -25,23 +27,31 @@
                                 {% endfor %}
                             </select>
                             <br>
-                            <small>"Ctrl + Click" to select multiple</small>
                             <button class="btn mx-auto mt-4 button-1" type="submit">Filter</button>
                             {% if filtered %}
                             <a href="{% url 'forum' %}?clear=1">
-                                <button type="button" class="btn btn-md mt-4 mx-3 button-1">Clear</button>
+                                <button type="button" class="btn btn-md mt-4 mx-auto button-1">Clear</button>
                             </a>
                             {% endif %}
+                        </form>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-9">
+                <div class="container card mb-4 shadow rounded">
+                    <div class="d-flex flex-center p-2">
+                        <img src="https://img.icons8.com/office/40/000000/test-account.png" height="50" width="50" />
+                        <a class="w-100" type="button" data-toggle="modal" data-target="#postModal">
+                            <div class="mx-2 w-100 p-3 text-muted start-blog-box">Share a post...</div>
+                        </a>
+                    </div>
+                </div>
                 {% for post in page_data %}
-                <div class="container card mb-4 shadow">
+                <div class="container card mb-4 shadow rounded">
                     <div class="card-body">
                         <a href="{% url 'post_detail' post.slug %}" class="forum-headings">
-                            <h2 class="mb-0" >{{ post.title }}
+                            <h2 class="mb-0">{{ post.title }}
                         </a>
                         </h2>
                         <p class="card-text small date">{{ post.created_on}}
@@ -60,5 +70,6 @@
         </div>
     </div>
 </section>
+{% include 'forum/post_modal.html' %}
 {% include 'pagination.html' %}
 {%endblock%}

@@ -8,17 +8,23 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # from questions.models import Round
 
 
-
 class AccountManager(BaseUserManager):
-
-    def create_user(self, username, email, password=None, is_active=True,
-                    staff=False, is_superuser=False, is_activated=False):
+    def create_user(
+        self,
+        username,
+        email,
+        password=None,
+        is_active=True,
+        staff=False,
+        is_superuser=False,
+        is_activated=False,
+    ):
         if not username:
-            raise ValueError('Users must have a unique username.')
+            raise ValueError("Users must have a unique username.")
         if not email:
-            raise ValueError('Users must have an email.')
+            raise ValueError("Users must have an email.")
         if not password:
-            raise ValueError('Users must have a password.')
+            raise ValueError("Users must have a password.")
 
         user = self.model(
             username=username,
@@ -41,7 +47,7 @@ class AccountManager(BaseUserManager):
             password=password,
             # fullname=fullname,
             staff=True,
-            is_activated=True
+            is_activated=True,
         )
         return user
 
@@ -53,16 +59,13 @@ class AccountManager(BaseUserManager):
             # fullname=fullname,
             staff=True,
             is_superuser=True,
-            is_activated=True
+            is_activated=True,
         )
         return user
 
 
-ACCOUNT_TYPES = (
-    ('recruiter', 'recruiter'),
-    ('expert', 'expert'),
-    ('user', 'user')
-)
+ACCOUNT_TYPES = (("recruiter", "recruiter"), ("expert", "expert"), ("user", "user"))
+
 
 class Account(AbstractBaseUser):
     # custom_fields
@@ -76,13 +79,12 @@ class Account(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     is_activated = models.BooleanField(default=False)
 
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email',]
-
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS = [
+        "email",
+    ]
 
     objects = AccountManager()
-
 
     def __str__(self):
         return self.username
@@ -97,4 +99,5 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return self.is_superuser
 
-	# We can add custom methods as per requirements
+
+# We can add custom methods as per requirements

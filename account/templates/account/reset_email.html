@@ -12,8 +12,7 @@
         <div class="auth-box-heading">Reset Password 🔐</div>
         <form action="{% url 'get_email' %}" method="POST">
             {% csrf_token %}
-            <input type="email" name="email" class="fields form-control" placeholder="Email"
-                required>
+            <input type="email" name="email" class="fields form-control" placeholder="Email" required>
             <p class="small text-muted">Enter your email to get reset link</p>
             <button type="submit" class="btn mt-3 button-1">Submit</button>
         </form>

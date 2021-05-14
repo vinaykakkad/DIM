@@ -21,13 +21,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-	path('', include('home.urls')),
-    path('', include('account.urls')),
-	path('', include('forum.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("home.urls")),
+    path("", include("account.urls")),
+    path("", include("forum.urls")),
     # path('sentry-debug/', trigger_error_for_sentry),
-	# path('', include('about.urls')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    # path('', include('about.urls')),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
 ]
 
 

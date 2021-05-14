@@ -8,33 +8,53 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Tags',
+            name="Tags",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('tag', models.CharField(max_length=220)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("tag", models.CharField(max_length=220)),
             ],
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=256)),
-                ('description', models.CharField(max_length=300)),
-                ('text', ckeditor_uploader.fields.RichTextUploadingField()),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('video', models.FileField(blank=True, null=True, upload_to='videos')),
-                ('image', models.FileField(blank=True, null=True, upload_to='images')),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Publish')], default=0)),
-                ('slug', models.SlugField(max_length=200, unique=True)),
-                ('tags', models.ManyToManyField(to='forum.Tags')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=256)),
+                ("description", models.CharField(max_length=300)),
+                ("text", ckeditor_uploader.fields.RichTextUploadingField()),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                ("video", models.FileField(blank=True, null=True, upload_to="videos")),
+                ("image", models.FileField(blank=True, null=True, upload_to="images")),
+                (
+                    "status",
+                    models.IntegerField(
+                        choices=[(0, "Draft"), (1, "Publish")], default=0
+                    ),
+                ),
+                ("slug", models.SlugField(max_length=200, unique=True)),
+                ("tags", models.ManyToManyField(to="forum.Tags")),
             ],
             options={
-                'ordering': ['-created_on'],
+                "ordering": ["-created_on"],
             },
         ),
     ]

@@ -1,36 +1,35 @@
 {% load static %}
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Font Awesome -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
+		<!-- Bootstrap Libraries -->
+		<link rel="stylesheet" href="{% static 'libs/bootstrap.min.css'%}" />
+		<script type="text/javascript" src="{% static 'libs/jquery.min.js'%}"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"
+		></script>
+		<script type="text/javascript" src="{% static 'libs/bootstrap.min.js'%}"></script>
+		<script type="text/javascript" src="{% static 'libs/bootstrap.bundle.min.js'%}"></script>
+		<!-- Base CSS -->
+		<link rel="stylesheet" href="{% static 'css/base.css'%}" />
+		<!-- Base JS -->
+		<script src="{% static 'js/base.js' %}"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
-    <!-- Bootstrap Libraries -->
-    <link rel="stylesheet" href="{% static 'libs/bootstrap.min.css'%}">
-    <script type="text/javascript" src="{% static 'libs/jquery.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'libs/bootstrap.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'libs/bootstrap.bundle.min.js'%}"></script>
-    <!-- Base CSS -->
-    <link rel="stylesheet" href="{% static 'css/base.css'%}">
-    <!-- Base JS -->
-    <script src="{% static 'js/base.js' %}"></script>
+		{% block head%} {% endblock %}
+	</head>
 
-    {% block head%} {% endblock %}
-</head>
-
-<body>
-    {% include 'messages.html' %}
-    {% include 'navbar.html' %}
-
-    {% block content %} {% endblock %}
-
-    {% include 'footer.html'%}
-</body>
-
+	<body>
+		{% include 'messages.html' %} {% include 'navbar.html' %} {% block content %} {% endblock %}
+		{% include 'footer.html'%}
+	</body>
 </html>
