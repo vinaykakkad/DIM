@@ -16,8 +16,8 @@ from django.utils.html import strip_tags
 from django.contrib import messages
 from django.db.models import Q
 
-from .forms import LoginForm, RegisterForm
-from .models import Account
+from .forms import LoginForm, RegisterForm, ProfileForm
+from .models import Account, Profile
 from .utils import generate_token, only_letters
 
 
@@ -234,61 +234,51 @@ class PasswordSetterView(View):
         return redirect("login")
 
 
-# class ProfileView(LoginRequiredMixin, View):
-#     """
-#         View for profile page
-#         Details of the users are displayed.
-#         User can update password and CF id.
-#     """
-#     login_url = '/login/'
-#     redirect_field_name = 'profile'
+def profile_view(request, username):
+    if request.method == "POST":
+        if request.user.completed_profile:
+            form = ProfileForm(request.POST, instance=request.user.profile)
+        else:
+            form = ProfileForm(request.POST)
 
-#     def get(self, request, *args, **kwargs):
-#         context = {}
-#         return render(request, 'account/profile/profile.html', context)
+        if form.is_valid():
+            if request.user.completed_profile:
+                Profile.objects.filter(user=request.user).delete()
+            else:
+                request.user.completed_profile = True
+                request.user.save()
 
-#     def post(self, request, *agrs, **kwargs):
-#         field = request.POST.get('field')
+            profile = form.save(commit=False)
+            profile.user = request.user
+            print(profile)
+            profile.save()
+            form.save_m2m()
 
-#         if field == 'password':
-#             old_password = request.POST.get('old')
-#             try:
-#                 user = authenticate(
-#                     request, username=request.user.username, password=old_password)
-#             except Exception as identifier:
-#                 user = None
+            return redirect("profile", username=username)
 
-#             if user is None:
-#                 messages.error(request, 'Password couldn\'t be verified')
-#             else:
-#                 password1 = request.POST.get('password1')
-#                 password2 = request.POST.get('password2')
+        messages.error(
+            request, "There was some error while adding the post, please try again!!"
+        )
+        return redirect("forum")
 
-#                 if password1 == password2:
-#                     request.user.set_password(password2)
-#                     request.user.save()
-#                     messages.info(request, 'Password changed successfully')
-#                 else:
-#                     messages.error(request, 'New Password didn\'t match')
+    profile = None
+    user = None
+    form = ProfileForm
 
-#             return redirect('profile')
+    try:
+        user = Account.objects.get(username=username)
+    except Exception as identifier:
+        pass
 
-#         else:
-#             password = request.POST.get('password')
-#             try:
-#                 user = authenticate(
-#                     request, username=request.user.username, password=password)
-#             except Exception as identifier:
-#                 user = None
+    try:
+        profile = user.profile
+        form = ProfileForm(instance=profile)
+    except Exception as identifier:
+        pass
 
-#             if user is None:
-#                 messages.error(request, 'Password couldn\'t be verified')
-#             else:
-#                 request.user.cf_username = request.POST.get('cf_username')
-#                 request.user.save()
-#                 messages.info(request, 'Username updated successfully')
+    context = {"profile": profile, "same": request.user == user, "form": form}
 
-#             return redirect('profile')
+    return render(request, "account/profile.html", context)
 
 
 @login_required

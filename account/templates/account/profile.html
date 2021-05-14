@@ -1,0 +1,57 @@
+{% extends 'base.html'%} {% load static %} {% block head %}
+<title>Login</title>
+<link rel="stylesheet" href="{% static 'account/css/profile.css'%}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="{% static 'account/js/profile.js'%}"></script>
+{% endblock %}
+
+{% block content %} 
+<div class="w-100 top-extra-box"></div>
+<div class="container profile-box pb-5">
+	<div class="profile-img-wrapper mx-auto">
+		<img
+			src="https://img.icons8.com/office/200/000000/test-account.png"
+            class="profile-img"
+        />
+	</div>
+    {% if profile is None %}
+        <div class="w-100 text-center">
+            <h4>404 - Profile Not Added!!</h4>
+        </div>
+    {% else %}
+    <div class="badges-wrapper mx-auto">
+        {% if profile.linkedin_url != '' %}
+        <a href="{{ profile.linkedin_url }}" class="mx-3">
+            <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkdeIN">
+        </a>
+        {% endif %}
+        {% if profile.github_url != '' %}
+        <a href="{{ profile.github_url }}" class="mx-3">
+            <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+        </a>
+        {% endif %}
+    </div>
+    <div class="bio-wrapper mt-5 text-center">
+        <div class="container">
+            {{ profile.bio | safe | linebreaks }}
+        </div>
+    </div>
+    <div class="skill-wrapper row justify-content-center my-5">
+        {% for skill in profile.skills.all %}
+            <div class="skill mx-2 col-sm-2 text-center">{{ skill }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if same %}
+    <div class="flex-center mx-auto">
+        <button class="btn button-1" data-toggle="modal" data-target="#profileModal">
+            Update Profile
+        </button>
+    </div>
+    {% endif %}
+</div>
+
+{% include 'account/update_profile_modal.html' %}
+{% endblock %}

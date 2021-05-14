@@ -1,6 +1,7 @@
 from django import forms
+from django.forms import widgets
 
-from .models import ACCOUNT_TYPES
+from .models import ACCOUNT_TYPES, Profile
 
 
 class RegisterForm(forms.Form):
@@ -86,3 +87,35 @@ class LoginForm(forms.Form):
 
     class meta:
         fields = ["username", "email"]
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("linkedin_url", "github_url", "bio", "skills")
+        widgets = {
+            "linkedin_url": forms.URLInput(
+                attrs={
+                    "class": "form-control fields",
+                    "autocomplete": "off",
+                    "placeholder": "Linkedin URL",
+                }
+            ),
+            "github_url": forms.TextInput(
+                attrs={
+                    "class": "form-control fields",
+                    "autocomplete": "off",
+                    "placeholder": "Github URL",
+                }
+            ),
+            "skills": forms.SelectMultiple(
+                attrs={
+                    "class": "selectpicker fields",
+                    "autocomplete": "off",
+                    "placeholder": "Skills",
+                    "size": "1",
+                    "data-live-search": "true",
+                    "data-max-options": "5",
+                }
+            ),
+        }

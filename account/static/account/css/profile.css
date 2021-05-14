@@ -1,0 +1,38 @@
+.top-extra-box {
+    min-height: 75px;
+    max-height: 200px;
+    height: 15vw;
+    background-color: var(--first);
+}
+
+.profile-box {
+    background-color: var(--base);
+    transform: translateY(-2vw);
+}
+
+.profile-img-wrapper {
+    transform: translateY(-50%);
+    width: min-content;
+}
+
+.profile-img {
+    min-width: 50px;
+    width: 15vw;
+    max-width: 200px;
+}
+
+.badges-wrapper {
+    width: fit-content;
+}
+
+.skill {
+    font-size: small;
+	color: var(--first);
+	background-color: hsla(214, 89%, 52%, 20%);
+	padding: 6px;
+	border-radius: 5px;
+}
+
+.increase-height {
+    min-height: 40px;
+}

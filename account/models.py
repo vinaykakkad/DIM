@@ -3,13 +3,12 @@ import pytz
 from datetime import datetime, timedelta, date
 
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
 )
-
-# from questions.models import Round
 
 
 class AccountManager(BaseUserManager):
@@ -77,6 +76,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField()
     fullname = models.CharField(max_length=220, blank=True, null=True)
     type = models.CharField(max_length=20, choices=ACCOUNT_TYPES)
+    completed_profile = models.BooleanField(default=False)
     # required_fields
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
@@ -103,5 +103,24 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def has_module_perms(self, app_label):
         return self.is_superuser
 
+    # We can add custom methods as per requirements
 
-# We can add custom methods as per requirements
+
+class Skill(models.Model):
+    skill = models.CharField(max_length=220)
+
+    def __str__(self):
+        return self.skill
+
+
+class Profile(models.Model):
+    github_url = models.URLField(max_length=500, null=True, blank=True)
+    linkedin_url = models.URLField(max_length=500, null=True, blank=True)
+    bio = RichTextUploadingField(blank=False)
+    skills = models.ManyToManyField(Skill)
+    user = models.OneToOneField(
+        Account, on_delete=models.CASCADE, related_name="profile"
+    )
+
+    def __str__(self):
+        return self.user.username
