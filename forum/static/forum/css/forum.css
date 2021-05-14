@@ -8,6 +8,12 @@
   color: hsl(0, 0%, 10%);
 }
 
+.start-blog-box {
+  border-radius: 40px;
+  border: 1px solid var(--base-dark-1);
+  /* color: var(--base-dark-2); */
+}
+
 .media-box {
   width: 90%;
 }
@@ -21,19 +27,8 @@
   border-radius: 5px;
 }
 
-.fields,
-.form-control {
-  border: 1px solid hsl(0, 0%, 70%);
-  background-color: #ffffff10;
-  color: hsl(0, 0%, 30%);
-}
-
-.form-control:focus {
-  color: hsl(0, 0%, 30%);
-  background-color: #ffffff10;
-  border: none;
-  border: 2px solid hsl(0, 0%, 70%);
-  box-shadow: none;
+.fields {
+  min-height: 40px;
 }
 
 .filter-comment {

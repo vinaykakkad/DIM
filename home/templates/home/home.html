@@ -1,27 +1,24 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block head %}
+{% extends 'base.html' %} {% load static %} {% block head %}
 <title>Home</title>
-<link rel="stylesheet" href="{% static 'home/css/home.css'%}">
-{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" href="{% static 'home/css/home.css'%}" />
+{% endblock %} {% block content %}
 <section id="home-body">
 	<div class="container flex-center full">
 		<div class="row">
 			<div class="col-md-7 order-1 order-md-2 flex-center">
 				<div class="container image-box">
-					<img src="{% static 'images/banner.svg' %}" width="100%">
+					<img src="{% static 'images/banner.svg' %}" width="100%" />
 				</div>
 			</div>
-			<div
-				class="col-md-5 order-2 order-md-1 flex-center">
+			<div class="col-md-5 order-2 order-md-1 flex-center">
 				<div class="container mb-5 description-box">
 					<h1 class="heading">Welcom to DogeIN</h1>
 					<div class="mt-0 mb-3 underline"></div>
 					<p class="sub-heading">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quia similique itaque animi, natus maiores repellendus, aperiam at doloribus odit, nesciunt nisi excepturi. Asperiores nobis officiis dolores ex, culpa assumenda.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quia
+						similique itaque animi, natus maiores repellendus, aperiam at doloribus
+						odit, nesciunt nisi excepturi. Asperiores nobis officiis dolores ex, culpa
+						assumenda.
 					</p>
 					{% if request.user.is_authenticated%}
 					<a href="{% url 'forum' %}">
