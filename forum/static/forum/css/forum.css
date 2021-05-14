@@ -1,40 +1,39 @@
 #forum-body {
-  min-height: 90vh;
+	min-height: 90vh;
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
-  border: 1px solid hsl(0, 0%, 80%);
-  color: hsl(0, 0%, 10%);
+	background-color: hsl(0, 0%, 100%);
+	border: 1px solid hsl(0, 0%, 80%);
+	color: hsl(0, 0%, 10%);
 }
 
 .start-blog-box {
-  border-radius: 40px;
-  border: 1px solid var(--base-dark-1);
-  /* color: var(--base-dark-2); */
+	border-radius: 40px;
+	border: 1px solid var(--base-dark-1);
 }
 
 .media-box {
-  width: 90%;
+	width: 90%;
 }
 
 .tag,
 .tag:hover {
-  font-size: small;
-  color: var(--first);
-  background-color: hsla(214, 89%, 52%, 20%);
-  padding: 6px;
-  border-radius: 5px;
+	font-size: small;
+	color: var(--first);
+	background-color: hsla(214, 89%, 52%, 20%);
+	padding: 6px;
+	border-radius: 5px;
 }
 
 .fields {
-  min-height: 40px;
+	min-height: 40px;
 }
 
 .filter-comment {
-  line-height: 1;
+	line-height: 1;
 }
 
 .comment {
-  background-color: var(--base-dark-1);
+	background-color: var(--base-dark-1);
 }

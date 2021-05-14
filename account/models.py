@@ -3,7 +3,11 @@ import pytz
 from datetime import datetime, timedelta, date
 
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import (
+    AbstractBaseUser,
+    BaseUserManager,
+    PermissionsMixin,
+)
 
 # from questions.models import Round
 
@@ -67,7 +71,7 @@ class AccountManager(BaseUserManager):
 ACCOUNT_TYPES = (("recruiter", "recruiter"), ("expert", "expert"), ("user", "user"))
 
 
-class Account(AbstractBaseUser):
+class Account(AbstractBaseUser, PermissionsMixin):
     # custom_fields
     username = models.CharField(unique=True, max_length=220)
     email = models.EmailField()

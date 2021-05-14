@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg sticky-top nav-class">
 
     <a class="navbar-brand nav-logo-class" href="{% url 'home' %}">
-        <h3><img src="{% static 'images/logo.png'%}" alt="DogeIN" class="logo"></h3>
+        <h3><img src="{% static 'images/logo.png' %}" alt="DogeIN" class="logo"></h3>
     </a>
 
     <button class="custom-toggler navbar-toggler p-0" type="button" data-toggle="collapse"
@@ -22,6 +22,9 @@
             </li>
             <li class="nav-item ">
                 <a class="nav-link nav-link-class" href="#">Jobs</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item ">

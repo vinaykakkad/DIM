@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.forms import ModelForm
-from django import forms
+
+from account.models import Account
 
 
 class Tags(models.Model):
@@ -19,6 +19,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(null=True, blank=True, max_length=200, unique=True)
     tags = models.ManyToManyField(Tags)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="posts")
 
     class Meta:
         ordering = ["-created_on"]
@@ -27,32 +28,14 @@ class Post(models.Model):
         return self.title
 
 
-class PostForm(ModelForm):
+class Comment(models.Model):
+    text = RichTextUploadingField(blank=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+
     class Meta:
-        model = Post
-        fields = ("title", "description", "text", "tags")
-        widgets = {
-            "title": forms.TextInput(
-                attrs={
-                    "class": "form-control fields",
-                    "autocomplete": "off",
-                    "placeholder": "Title",
-                }
-            ),
-            "description": forms.TextInput(
-                attrs={
-                    "class": "form-control fields",
-                    "autocomplete": "off",
-                    "placeholder": "Description",
-                }
-            ),
-            "tags": forms.SelectMultiple(
-                attrs={
-                    "class": "selectpicker fields",
-                    "autocomplete": "off",
-                    "placeholder": "Tags",
-                    "size": "1",
-                    "data-live-search": "true",
-                }
-            ),
-        }
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.post}_{self.user}_{self.pk}"

@@ -1,0 +1,29 @@
+<div
+	class="modal fade"
+	id="addTag"
+	tabindex="-1"
+	aria-labelledby="addTagLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="addTagLabel">Add tags</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+                <form action="{% url 'add_tag' %}" class="p-4" method="POST">
+                    {% csrf_token %}
+                    <label for="tag">Tag:</label><br>
+                    <input class="form-control mt-3" type="text" name="tag" />
+					<div class="modal-footer mt-5">
+						<button type="submit" class="btn button-1">Add</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="{% static 'forum/js/forum.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,9 +23,9 @@
                             <input type="text" name="title" class="form-control mb-4 fields">
                             <label for="tags">By tags:</label>
                             <select name="tags" class="custom-select form-control fields" multiple>
-                                {% for tag in tags %}
+                            {% for tag in tags %}
                                 <option value="{{tag}}">{{tag}}</option>
-                                {% endfor %}
+                            {% endfor %}
                             </select>
                             <br>
                             <button class="btn mx-auto mt-4 button-1" type="submit">Filter</button>
@@ -41,10 +42,20 @@
             <div class="col-lg-9">
                 <div class="container card mb-4 shadow rounded">
                     <div class="d-flex flex-center p-2">
-                        <img src="https://img.icons8.com/office/40/000000/test-account.png" height="50" width="50" />
+                        <img 
+                            src="https://img.icons8.com/office/40/000000/test-account.png" 
+                            height="50" 
+                            width="50" 
+                        />
                         <a class="w-100" type="button" data-toggle="modal" data-target="#postModal">
                             <div class="mx-2 w-100 p-3 text-muted start-blog-box">Share a post...</div>
                         </a>
+                        <img 
+                            src="https://img.icons8.com/color/36/000000/plus--v3.png"
+                            data-toggle="modal" 
+                            data-target="#addTag" 
+                            class="btn"
+                        />
                     </div>
                 </div>
                 {% for post in page_data %}
@@ -58,10 +69,10 @@
                         </p>
                         <p class="card-text ">{{post.description }}</p>
                         <p>
-                            {% for tag in post.tags.all %}
+                        {% for tag in post.tags.all %}
                             <a href="{% url 'forum' %}?tags={{tag}}" class="tag">#{{tag}}</a>
                             {% if forloop.counter != post.tags.all|length %}&emsp14; {% endif %}
-                            {% endfor %}
+                        {% endfor %}
                         </p>
                     </div>
                 </div>
@@ -70,6 +81,7 @@
         </div>
     </div>
 </section>
-{% include 'forum/post_modal.html' %}
+{% include 'forum/add_tag_modal.html' %}
+{% include 'forum/add_post_modal.html' %}
 {% include 'pagination.html' %}
 {%endblock%}
