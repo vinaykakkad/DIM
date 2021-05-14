@@ -1,0 +1,34 @@
+<div
+	class="modal fade"
+	id="profileModal"
+	tabindex="-1"
+	aria-labelledby="profileModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="profileModalLabel">Create your post</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="{% url 'profile' request.user.username %}" id="post-form">
+					{% csrf_token %} {{ form.media }}
+					<label for="{{ form.linkedin_url.id_for_label }}" class="mt-3">LinkedIN URL:</label>
+					{{ form.linkedin_url }}
+					<label for="{{ form.github_url.id_for_label }}" class="mt-3">GitHub URL:</label>
+					{{ form.github_url }}
+					<label for="{{ form.bio.id_for_label }}" class="mt-3">Content</label><br />
+					{{ form.bio }}<br />
+					<label for="{{ form.skills.id_for_label }}" class="mt-4">Skills</label>
+					{{ form.skills }}
+					<div class="modal-footer mt-5">
+						<button type="submit" class="btn button-1">Post</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

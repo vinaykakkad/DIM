@@ -7,6 +7,7 @@ from .views import (
     ForgotPasswordView,
     PasswordSetterView,
     logout_view,
+    profile_view,
 )
 
 
@@ -21,5 +22,6 @@ urlpatterns = [
         PasswordSetterView.as_view(),
         name="set_password",
     ),
+    path("profile/<username>", profile_view, name="profile"),
     path("logout/", logout_view, name="logout"),
 ]
