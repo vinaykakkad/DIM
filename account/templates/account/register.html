@@ -17,13 +17,13 @@
                 👋Register
             </div>
             {% for field in form %}
-            {{field}}
+                {{field}}
             {% endfor %}
             <button type="submit" class="btn mt-4 mb-4 button-1">Register</button>
         </form>
         <div class="container p-0 pb-4 auth-box-footer text-center">
-            Already have an account?&emsp13;<a href="{% url 'login'%}" class="font-weight-bold">Log
-                in</a>
+            Already have an account?&emsp13;
+            <a href="{% url 'login'%}" class="font-weight-bold">Login</a>
         </div>
     </div>
 </section>

@@ -1,24 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
 <title>{{ object.title }}</title>
 <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" />
-{% endblock %} {% block content %}
+<script type="text/javascript" src="{% static 'forum/js/post_detail.js' %}"></script>
+{% endblock %} 
+
+{% block content %}
 <div class="container py-5 main full">
 	<div class="card shadow">
 		<div class="card-body">
 			<h1 class="text-first">{{ object.title }}</h1>
-			<p class="text-muted">{{ post.created_on }}</p>
+			<p class="text-muted">{{ object.created_on }}</p>
 			<p class="card-text">{{ object.text | safe | linebreaks }}</p>
-			<div class="mx-auto my-5 media-box">
-				{% if object.image|length %}
-				<img src="{{ object.image.url }}" width="100%" />
-				{% endif %} {% if object.video|length %}
-				<video width="100%" controls>
-					<source src="{{ object.video.url }}" />
-				</video>
-				{% endif %}
-			</div>
 			<hr class="my-3" />
-			<div class="d-flex justify-content-start text-first">
+			<div class="row d-flex justify-content-start text-first">
 				<div class="flex-center mx-2">
 					<svg
 						class="mx-2"
@@ -56,7 +53,11 @@
 					</svg>
 					<span>Like</span>
 				</div>
-				<div class="flex-center mx-2">
+				<div 
+					class="btn flex-center mx-2"
+					data-toggle="modal"
+					data-target="#addComment"
+				>
 					<svg
 						class="mx-2"
 						xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +94,14 @@
 					</svg>
 					<span>Comment</span>
 				</div>
-				<div class="flex-center mx-2">
+				<div 
+					class="btn flex-center mx-2"
+					id="tooltip"
+					data-toggle="tooltip" 
+					data-placement="right" 
+					title="Click to copy"
+					data-url="{{ request.build_absolute_uri }}"
+				>
 					<svg
 						class="mx-2"
 						xmlns="http://www.w3.org/2000/svg"
@@ -135,47 +143,26 @@
 	</div>
 	<div class="card shadow mt-2">
 		<div class="card-body">
-			<div class="comment-main d-flex p-2">
-				<img
-					src="https://img.icons8.com/office/40/000000/test-account.png"
-					height="40"
-					width="40"
-				/>
-				<div class="comment p-2 mx-2">
-					<div class="comment-head d-flex justify-content-between mb-3">
-						<small class="form-text font-weight-bold">Vinay Kakkad</small>
-						<small class="form-text text-secondary">May 12, 2021</small>
-					</div>
-					<div class="ml-4 rounded">
-						Python 3.7.1 is not supported by Heroku, as per their documentation on
-						supported runtimes. Change the Python version to 3.7.2 if you want Python
-						3.7, or 3.6.8 if you don't. For information on specifying a runtime, see
-						this page of the documentation. By default it uses 3.6.8 for Python, so if
-						you want 3.7.2 you need to create a file called runtime.txt in the root
-						directory of your app with python-3.7.2 written inside.
+			{% for comment in comments %}
+				<div class="comment-main d-flex p-2 w-100">
+					<img
+						src="https://img.icons8.com/office/40/000000/test-account.png"
+						height="40"
+						width="40"
+					/>
+					<div class="comment p-2 mx-2 w-100">
+						<div class="comment-head d-flex justify-content-between mb-3">
+							<small class="form-text font-weight-bold">{{ comment.user }}</small>
+							<small class="form-text text-secondary">{{ comment.created_on }}</small>
+						</div>
+						<div class="ml-4 rounded">
+							{{ comment.text | safe | linebreaks }}
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="comment-main d-flex p-2">
-				<img
-					src="https://img.icons8.com/office/40/000000/test-account.png"
-					height="40"
-					width="40"
-				/>
-				<div class="comment p-2 mx-2">
-					<div class="comment-head d-flex justify-content-between mb-3">
-						<small class="form-text font-weight-bold">Kakkad Vinay</small>
-						<small class="form-text text-secondary">May 12, 2021</small>
-					</div>
-					<div class="ml-4 rounded">
-						Just upgrade the version in your runtime.txt file while pushing the code.
-						List of official supported python version in stacks - python-3.9.4
-						python-3.8.9 python-3.7.10 python-3.6.13 For more details check -
-						https://devcenter.heroku.com/articles/python-support#supported-runtimes
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 </div>
+{% include 'forum/add_comment_modal.html' %}
 {% endblock content %}
