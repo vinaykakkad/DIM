@@ -15,6 +15,18 @@
     width: min-content;
 }
 
+.profile-name {
+    font-size: larger;
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+@media screen and (min-width:576px) {
+    .profile-name {
+        font-size: xx-large;
+    }
+}
+
 .profile-img {
     min-width: 50px;
     width: 15vw;
@@ -31,6 +43,7 @@
 	background-color: hsla(214, 89%, 52%, 20%);
 	padding: 6px;
 	border-radius: 5px;
+    width: fit-content;
 }
 
 .increase-height {
