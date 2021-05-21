@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
-import django_heroku
+# import django_heroku
 import dj_database_url
 from decouple import config
 
@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # customs apps
     "home",
+    "jobs",
     "forum",
+    "events",
     "account",
     "ckeditor",
 ]
@@ -175,7 +177,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 
 # staticfiles configuration for heroku

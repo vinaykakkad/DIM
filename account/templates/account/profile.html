@@ -1,5 +1,5 @@
 {% extends 'base.html'%} {% load static %} {% block head %}
-<title>Login</title>
+<title>Profile</title>
 <link rel="stylesheet" href="{% static 'account/css/profile.css'%}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
@@ -9,7 +9,7 @@
 {% block content %} 
 <div class="w-100 top-extra-box"></div>
 <div class="container profile-box pb-5">
-	<div class="profile-img-wrapper mx-auto">
+	<div class="profile-img-wrapper mx-auto text-center">
 		<img
 			src="https://img.icons8.com/office/200/000000/test-account.png"
             class="profile-img"
@@ -20,7 +20,10 @@
             <h4>404 - Profile Not Added!!</h4>
         </div>
     {% else %}
-    <div class="badges-wrapper mx-auto">
+    <div class="name-wrapper m-0 p-0 mx-auto text-center">
+        <span class="profile-name m-0 p-0">{{ request.user.fullname }}</span>
+    </div>
+    <div class="badges-wrapper mx-auto mt-5">
         {% if profile.linkedin_url != '' %}
         <a href="{{ profile.linkedin_url }}" class="mx-3">
             <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkdeIN">
@@ -39,13 +42,13 @@
     </div>
     <div class="skill-wrapper row justify-content-center my-5">
         {% for skill in profile.skills.all %}
-            <div class="skill mx-2 col-sm-2 text-center">{{ skill }}</div>
+            <div class="skill mx-2 col-sm-2 my-2 text-center">{{ skill }}</div>
         {% endfor %}
     </div>
     {% endif %}
     
     {% if same %}
-    <div class="flex-center mx-auto">
+    <div class="flex-center mx-auto mt-5">
         <button class="btn button-1" data-toggle="modal" data-target="#profileModal">
             Update Profile
         </button>

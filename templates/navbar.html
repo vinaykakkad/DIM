@@ -24,6 +24,9 @@
                 <a class="nav-link nav-link-class" href="#">Jobs</a>
             </li>
             <li class="nav-item ">
+                <a class="nav-link nav-link-class" href="{% url 'profile' request.user.username %}">Profile</a>
+            </li>
+            <li class="nav-item ">
                 <a class="nav-link nav-link-class" href="{% url 'logout' %}">Logout</a>
             </li>
             {% else %}
