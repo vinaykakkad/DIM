@@ -1,0 +1,37 @@
+<div
+	class="modal fade"
+	id="jobPostModal"
+	tabindex="-1"
+	aria-labelledby="jobPostModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="jobPostModalLabel">
+					Create your post
+				</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="{% url 'recruiter_jobs'  %}" id="post-form">
+					{% csrf_token %} {{ form.media }}
+					{% for field in form %}
+					<label for="{{ field.id_for_label }}" class="mt-3">{{ field.label }}</label><br>
+					{{field}}<br>
+					{% endfor %}
+					<div class="modal-footer mt-5">
+						<button type="submit" class="btn button-1">Post</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

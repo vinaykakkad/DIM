@@ -41,6 +41,11 @@ def filter_posts(posts, request):
         request.session["title"] = None
 
     # Filtering data as per requirement
+    if request.session["title"] is not None:
+        filtered = True
+        filter_title = request.session["title"]
+        posts = posts.filter(title__icontains=filter_title)
+
     if request.session["tags"] is not None:
         filtered = True
         received_tags = request.session["tags"]
@@ -51,9 +56,5 @@ def filter_posts(posts, request):
                 final_posts.append(post)
         posts = final_posts
 
-    if request.session["title"] is not None:
-        filtered = True
-        filter_title = request.session["title"]
-        posts = posts.filter(title__icontains=filter_title)
 
     return posts, filtered

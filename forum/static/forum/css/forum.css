@@ -24,6 +24,7 @@
 	background-color: hsla(214, 89%, 52%, 20%);
 	padding: 6px;
 	border-radius: 5px;
+	width: fit-content;
 }
 
 .fields {
@@ -36,4 +37,11 @@
 
 .comment {
 	background-color: var(--base-dark-1);
+}
+
+@media (min-width: 768px) {
+	.modal-xl {
+	  	width: 90%;
+	 	max-width:1200px;
+	}
 }
