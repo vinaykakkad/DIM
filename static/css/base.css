@@ -30,7 +30,7 @@ body {
 }
 
 .custom-toggler .navbar-toggler-icon {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(128, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(24, 118, 242)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .nav-link-class {
@@ -85,29 +85,25 @@ footer a:hover {
 .button-1 {
 	background-color: var(--first);
 	color: var(--base);
-	border: 1px solid hsl(0, 0%, 70%);
-	border-bottom: 3px solid hsl(0, 0%, 70%);
-	transition-duration: 1s;
-	transition-property: border;
-	min-width: 160px;
+	border: 1px solid var(--base);
 }
 
 .button-1:hover {
-	border-bottom: 3px solid var(--first-dark-1);
+	background-color: var(--base);
+	color: var(--first);
+	border: 1px solid var(--first);
 }
 
 .button-2 {
 	background-color: var(--base);
 	color: var(--first);
-	border: 1px solid hsl(0, 0%, 70%);
-	border-bottom: 3px solid hsl(0, 0%, 70%);
-	transition-duration: 1s;
-	transition-property: border;
-	min-width: 160px;
+	border: 1px solid var(--first);
 }
 
 .button-2:hover {
-	border-bottom: 3px solid var(--first-dark-1);
+	background-color: var(--first);
+	color: var(--base);
+	border: 1px solid var(--base);
 }
 
 .text-first {

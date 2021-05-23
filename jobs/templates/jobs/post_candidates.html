@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block head %}
+<title>Post Candidates</title>
+<!-- <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" /> -->
+<!-- <link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="{% static 'forum/js/forum.js' %}"></script> -->
+{% endblock %} 
+
+{% block content %}
+    {% for user in users %}
+    User: {{user}}<br>
+    Profile: {% url "profile" user.username %}
+    {% endfor %}
+{%endblock%}

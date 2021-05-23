@@ -1,0 +1,74 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block head %}
+<title>Recruiter | Jobs</title>
+<link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" />
+<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="{% static 'forum/js/forum.js' %}"></script>
+{% endblock %} 
+
+{% block content %}
+<section id="forum-body">
+
+    <!-- Div for job post modal -->
+	<div class="container card my-4 shadow rounded">
+		<div class="d-flex flex-center p-2">
+			<img 
+                src="https://img.icons8.com/office/40/000000/test-account.png" 
+                height="50" 
+                width="50" 
+            />
+			<a
+				class="w-100"
+				type="button"
+				data-toggle="modal"
+				data-target="#jobPostModal"
+			>
+				<div class="mx-2 w-100 p-3 text-muted start-blog-box">
+					Post a job....
+				</div>
+			</a>
+		</div>
+	</div>
+
+    <!-- divs for job posts -->
+	{% for job in jobs %}
+	<div class="container card mb-4 shadow rounded">
+		<div class="card-body">
+			<a href="{% url 'post_candidates' job.pk %}">
+				<h2 class="mb-0 text-first">{{ job.role }} @ {{ job.company }}</h2>
+			</a>
+			<p class="card-text small date">{{ job.posted_on }}</p>
+			<p class="card-text my-4">{{ job.description }}</p>
+			<div class="row text-center">
+				{% for skill in job.skills.all %}
+				<div class="m-2 tag">
+					<a href="{% url 'forum' %}?tags={{skill}}">#{{skill}}</a>
+				</div>
+				{% endfor %}
+			</div>
+			<hr class="my-3" />
+			<div class="row">
+				<div class="col-8">{{ job.location }} • {{ job.salary }}</div>
+				<div class="col-4 d-flex justify-content-end">
+					<form action="{% url 'job_post_delete' %}" method="post">
+						{% csrf_token %}
+						<input type="hidden" name="post_pk" value="{{ job.pk }}">
+						<button type="submit" class="btn button-2">Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</section>
+
+{% include 'jobs/job_post_modal.html'%} 
+{% include 'pagination.html' %} 
+
+{%endblock%}
