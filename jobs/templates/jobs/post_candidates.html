@@ -3,18 +3,37 @@
 
 {% block head %}
 <title>Post Candidates</title>
-<!-- <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" /> -->
-<!-- <link
-	rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<script type="text/javascript" src="{% static 'forum/js/forum.js' %}"></script> -->
 {% endblock %} 
 
 {% block content %}
-    {% for user in users %}
-    User: {{user}}<br>
-    Profile: {% url "profile" user.username %}
-    {% endfor %}
-{%endblock%}
+<div class="container my-5 full">
+	<table class="table bg-white table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Candidate</th>
+				<th scope="col">Profile</th>
+				<th scope="col">Contact</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+			<tr>
+				<th scope="row">{{ forloop.counter }}</th>
+				<td>{{ user }}</td>
+				<td>
+					<a href="{% url 'profile' user.username %}">
+						<button class="btn button-2">Profile</button>
+					</a>
+				</td>
+				<td>
+					<a href="https://one-one-chat-3686f.web.app/">
+						<button class="btn button-2">Contact</button>
+					</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ from .models import Skill
 
 def filter_jobs(jobs, request):
     filtered = False
-    session =  request.session
+    session = request.session
 
     # Clearing all filters
     try:
@@ -20,7 +20,7 @@ def filter_jobs(jobs, request):
     try:
         skills = request.GET.getlist("skills")
 
-        if (skills is not None and len(skills) != 0):
+        if skills is not None and len(skills) != 0:
             session["job_skills"] = skills
     except Exception as identifier:
         pass
@@ -34,14 +34,13 @@ def filter_jobs(jobs, request):
     except Exception as identifier:
         pass
 
-
     # If session variables aren't initialized, initialize as None
     try:
         if session["job_skills"] is not None:
             pass
     except Exception as identifier:
         session["job_skills"] = None
-        
+
     try:
         if session["job_title"] is not None:
             pass
@@ -54,8 +53,8 @@ def filter_jobs(jobs, request):
     if session["job_title"] is not None:
         filtered = True
         jobs = jobs.filter(
-            Q(role__icontains=session["job_title"]) |
-            Q(company__icontains=session["job_title"])
+            Q(role__icontains=session["job_title"])
+            | Q(company__icontains=session["job_title"])
         )
 
     # skills
@@ -70,6 +69,5 @@ def filter_jobs(jobs, request):
                 final_jobs.append(job)
 
         jobs = final_jobs
-
 
     return jobs, filtered

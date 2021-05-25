@@ -63,6 +63,7 @@ nav {
 	padding-top: 12px;
 	padding-bottom: 12px;
 }
+
 .auth-box a,
 .auth-box a:hover {
 	color: var(--first);

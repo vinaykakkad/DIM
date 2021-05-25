@@ -5,6 +5,12 @@ from .models import ACCOUNT_TYPES, Profile
 
 
 class RegisterForm(forms.Form):
+    """
+    Account Registration Form
+        - Adding accounts
+        - Updating accounts
+    """
+
     username = forms.CharField(
         label="Username",
         widget=forms.TextInput(
@@ -63,6 +69,11 @@ class RegisterForm(forms.Form):
 
 
 class LoginForm(forms.Form):
+    """
+    Account Registration Form
+        - Authenticate User
+    """
+
     username = forms.CharField(
         label="Username",
         widget=forms.TextInput(
@@ -90,6 +101,12 @@ class LoginForm(forms.Form):
 
 
 class ProfileForm(forms.ModelForm):
+    """
+    Account Registration Form
+        - Adding profile
+        - Updating profile
+    """
+
     class Meta:
         model = Profile
         fields = ("linkedin_url", "github_url", "bio", "skills")

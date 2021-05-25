@@ -1,7 +1,3 @@
-import json
-import pytz
-from datetime import datetime, timedelta, date
-
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import (
@@ -12,6 +8,11 @@ from django.contrib.auth.models import (
 
 
 class AccountManager(BaseUserManager):
+    """
+    Account Manger
+        - Extends base user manager
+    """
+
     def create_user(
         self,
         username,
@@ -71,6 +72,10 @@ ACCOUNT_TYPES = (("recruiter", "recruiter"), ("expert", "expert"), ("user", "use
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
+    """
+    Account Model
+    """
+
     # custom_fields
     username = models.CharField(unique=True, max_length=220)
     email = models.EmailField()
@@ -107,6 +112,10 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
 
 class Skill(models.Model):
+    """
+    Skill Model
+    """
+
     skill = models.CharField(max_length=220)
 
     def __str__(self):
@@ -114,6 +123,10 @@ class Skill(models.Model):
 
 
 class Profile(models.Model):
+    """
+    Profile Model
+    """
+
     github_url = models.URLField(max_length=500, null=True, blank=True)
     linkedin_url = models.URLField(max_length=500, null=True, blank=True)
     bio = RichTextUploadingField(blank=False)
