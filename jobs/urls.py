@@ -4,7 +4,7 @@ from .views import (
     user_job_list_view,
     recruiter_job_view,
     delete_job_post_view,
-    matching_user_view
+    matching_user_view,
 )
 
 urlpatterns = [

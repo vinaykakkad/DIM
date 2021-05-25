@@ -27,7 +27,7 @@ class JobPostForm(ModelForm):
                 attrs={
                     "class": "form-control fields",
                     "autocomplete": "off",
-                    "placeholder": "Description of the job..."
+                    "placeholder": "Description of the job...",
                 }
             ),
             "skills": forms.SelectMultiple(

@@ -128,3 +128,5 @@ dmypy.json
 .pyre/
 
 .prettierrc
+package-lock.json
+node_modules/

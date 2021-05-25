@@ -6,7 +6,6 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -56,6 +55,7 @@ class RegisterView(View):
         username = request.POST.get("username")
         fullname = request.POST.get("fullname")
         password = request.POST.get("password")
+        type = request.POST.get("type")
         email = request.POST.get("email")
 
         if not only_letters(username):
@@ -76,7 +76,11 @@ class RegisterView(View):
             return redirect("register")
 
         user = Account(
-            username=username, email=email, password=password, fullname=fullname
+            username=username,
+            email=email,
+            password=password,
+            fullname=fullname,
+            type=type,
         )
         user.set_password(password)
         user.save()

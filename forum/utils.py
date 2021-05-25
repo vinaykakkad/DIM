@@ -56,5 +56,4 @@ def filter_posts(posts, request):
                 final_posts.append(post)
         posts = final_posts
 
-
     return posts, filtered
