@@ -26,6 +26,7 @@ urlpatterns = [
     path("", include("account.urls")),
     path("", include("forum.urls")),
     path("", include("jobs.urls")),
+    path("", include("courses.urls")),
     # path('sentry-debug/', trigger_error_for_sentry),
     # path('', include('about.urls')),
     path("ckeditor/", include("ckeditor_uploader.urls")),
