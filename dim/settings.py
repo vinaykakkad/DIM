@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "events",
     "account",
     "ckeditor",
+    "courses",
 ]
 
 MIDDLEWARE = [

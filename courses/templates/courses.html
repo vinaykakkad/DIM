@@ -1,0 +1,90 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block head %}
+<title>{{ object.title }}</title>
+<link rel="stylesheet" href="{% static 'courses.css' %}">
+<script type="text/javascript" src="{% static 'courses.js' %}"></script>
+{% endblock %} 
+
+{% block content %}
+
+    <div class="margin-class">
+
+    <h1> Courses </h1>
+    
+    <div class="data">
+            <hr>
+            <table class="table">
+                <tr class="heading">
+                    <th>Index</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Field</th>
+                </tr>
+
+                {% for course in courses %}
+                <div>     
+                        <tr  class="hvr" onclick="window.location='{{course.link}}';">
+                            <td> {{forloop.counter}} </td>
+                            <td> {{course.name}} </td>
+                            <td> {{course.price}} </td>
+                            <td> {{course.field}} </td>
+                            
+                        </tr>       
+                </div>
+                {% endfor %}
+            </table>
+            </hr>
+        </div>
+
+
+    <!-- {% for course in courses %}
+        <div class="container card mb-4 shadow rounded">
+            <div class="card-body">
+                <a href="{% url 'post_detail' post.slug %}" class="forum-headings">
+                    <h2 class="mb-0">{{ course.title }}
+                </a>
+                </h2>
+                <p class="card-text small date">{{ course.created_on}}
+                </p>
+                <p class="card-text ">{{course.description }}</p>
+                <p>
+                {% for tag in post.tags.all %}
+                    <a href="{% url 'forum' %}?tags={{tag}}" class="tag">#{{tag}}</a>
+                    {% if forloop.counter != post.tags.all|length %}&emsp14; {% endif %}
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+    {% endfor %} -->
+
+
+
+        
+
+        <div class="pagination">
+            {% if courses.has_previous %}
+                <button class="page button" onclick="paginate_func('1')">First</button>
+                <button class="page button" onclick="paginate_func('{{ courses.previous_page_number}}')">Previous</button>
+            {% endif %}
+
+            {% for num in courses.paginator.page_range %}
+                {% if courses.number == num %}
+                    <button class="page button-selected" onclick="paginate_func('{{ num }}')">{{num}}</button>
+                {% elif num > courses.number|add:'-3' and num < courses.number|add:'3' %}
+                    <button class="page button" onclick="paginate_func('{{ num }}')">{{num}}</button>
+                {% endif %}
+            {% endfor %}
+
+            {% if courses.has_next %}
+                <button class="page button" onclick="paginate_func('{{ courses.next_page_number}}')">Next</button>
+                <button class="page button" onclick="paginate_func('{{ courses.paginator.num_pages}}')">Last</button>
+            {% endif %}
+        </div>
+    
+    </div>
+
+
+
+{% endblock content %}
