@@ -20,14 +20,25 @@
             <li class="nav-item ">
                 <a class="nav-link nav-link-class" href="https://one-one-chat-3686f.web.app/">Chat</a>
             </li>
-            {% if request.user.type == "recruiter" %}
-            <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'recruiter_jobs' %}">Jobs</a>
-            </li>
-            {% else %}
-            <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'jobs' %}">Jobs{{request.user.type}}</a>
-            </li>
+            {% if request.user.completed_profile %}
+                {% if request.user.type == "recruiter" %}
+                <li class="nav-item ">
+                    <a class="nav-link nav-link-class" href="{% url 'recruiter_jobs' %}">Jobs</a>
+                </li>
+                {% else %}
+                <li class="nav-item ">
+                    <a class="nav-link nav-link-class" href="{% url 'jobs' %}">Jobs</a>
+                </li>
+                {% endif %}
+                {% if request.user.type == "expert" %}
+                <li class="nav-item ">
+                    <a class="nav-link nav-link-class" href="{% url 'events' %}">Events</a>
+                </li>
+                {% else %}
+                <li class="nav-item ">
+                    <a class="nav-link nav-link-class" href="{% url 'event_posts' %}">Events</a>
+                </li>
+                {% endif %}
             {% endif %}
             <li class="nav-item ">
                 <a class="nav-link nav-link-class" href="{% url 'profile' request.user.username %}">Profile</a>

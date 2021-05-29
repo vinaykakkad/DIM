@@ -2,7 +2,7 @@
 {% load static %} 
 
 {% block head %}
-<title>Recruiter | Jobs</title>
+<title>Events | Posts</title>
 <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" />
 <link
 	rel="stylesheet"
@@ -15,7 +15,7 @@
 {% block content %}
 <section id="forum-body">
 
-    <!-- Div for job post modal -->
+    <!-- Div for event post modal -->
 	<div class="container card my-4 shadow rounded">
 		<div class="d-flex flex-center p-2">
 			<img 
@@ -27,38 +27,38 @@
 				class="w-100"
 				type="button"
 				data-toggle="modal"
-				data-target="#jobPostModal"
+				data-target="#eventPostModal"
 			>
 				<div class="mx-2 w-100 p-3 text-muted start-blog-box">
-					Post a job....
+					Post an event....
 				</div>
 			</a>
 		</div>
 	</div>
 
-    <!-- divs for job posts -->
-	{% for job in jobs %}
+    <!-- divs for event posts -->
+	{% for event in events %}
 	<div class="container card mb-4 shadow rounded">
 		<div class="card-body">
-			<a href="{% url 'post_candidates' job.pk %}">
-				<h2 class="mb-0 text-first">{{ job.role }} @ {{ job.company }}</h2>
+			<a href="{% url 'event_candidates' event.pk %}">
+				<h2 class="mb-0 text-first">{{ event.title }}</h2>
 			</a>
-			<p class="card-text small date">{{ job.posted_on }}</p>
-			<p class="card-text my-4">{{ job.description }}</p>
+			<p class="card-text small date">{{ event.posted_on }}</p>
+			<p class="card-text my-4">{{ event.description }}</p>
 			<div class="row text-center">
-				{% for skill in job.skills.all %}
+				{% for skill in event.skills.all %}
 				<div class="m-2 tag">
-					<a href="{% url 'jobs' %}?tags={{skill}}">#{{skill}}</a>
+					<a href="{% url 'events' %}?tags={{skill}}">#{{skill}}</a>
 				</div>
 				{% endfor %}
 			</div>
 			<hr class="my-3" />
 			<div class="row">
-				<div class="col-8">{{ job.location }} • {{ job.salary }}</div>
+				<div class="col-8">Organization: {{ event.oraganization }}</div>
 				<div class="col-4 d-flex justify-content-end">
-					<form action="{% url 'job_post_delete' %}" method="post">
+					<form action="{% url 'event_post_delete' %}" method="post">
 						{% csrf_token %}
-						<input type="hidden" name="post_pk" value="{{ job.pk }}">
+						<input type="hidden" name="event_pk" value="{{ event.pk }}">
 						<button type="submit" class="btn button-2">Delete</button>
 					</form>
 				</div>
@@ -68,7 +68,7 @@
 	{% endfor %}
 </section>
 
-{% include 'jobs/job_post_modal.html'%} 
+{% include 'events/event_post_modal.html'%} 
 {% include 'pagination.html' %} 
 
 {%endblock%}
