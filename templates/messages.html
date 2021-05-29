@@ -1,9 +1,11 @@
+{% if request.user.is_activated %}
 {% if not request.user.completed_profile %}
 <div class="alert alert-danger m-0">
     <strong>You must complete your <a class="text-danger" href="{% url 'profile' request.user.username %}">profile</a> to get all the features</strong>
 </div>
+{% endif %}
+{% endif %}
 {% if messages %}   
-    {% endif %}
     {% for message in messages %}
         {% if forloop.counter == messages|length %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
