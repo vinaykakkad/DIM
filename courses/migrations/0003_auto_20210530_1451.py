@@ -6,24 +6,24 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('courses', '0002_auto_20210526_1109'),
+        ("courses", "0002_auto_20210526_1109"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='courses',
-            name='description',
-            field=models.TextField(default='something'),
+            model_name="courses",
+            name="description",
+            field=models.TextField(default="something"),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='courses',
-            name='posted_on',
+            model_name="courses",
+            name="posted_on",
             field=models.DateTimeField(auto_now=True),
         ),
         migrations.AlterField(
-            model_name='courses',
-            name='link',
+            model_name="courses",
+            name="link",
             field=models.URLField(max_length=10000),
         ),
     ]

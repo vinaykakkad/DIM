@@ -1,0 +1,84 @@
+<div
+	class="modal fade"
+	id="eventModal"
+	tabindex="-1"
+	aria-labelledby="eventModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="eventModalLabel">
+					Create your post
+				</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form
+					action="{% url 'events' %}"
+					method="GET"
+					class="form-group"
+					id="filter-form"
+				>
+					<!-- By title -->
+					<label for="title">By title:</label>
+					{% if request.session.event_title %}
+					<input
+						type="text"
+						name="title"
+						value="{{ request.session.event_title }}"
+						class="form-control mb-4 fields"
+					/>
+					{% else %}
+					<input
+						type="text"
+						name="title"
+						class="form-control mb-4 fields"
+					/>
+					{% endif %}
+					<label for="skills">By skills:</label>
+					<select
+						name="skills"
+						class="custom-select form-control fields"
+						multiple
+					>
+						{% for skill in skills %}
+						{% if skill.skill in request.session.event_skills %}
+						<option 
+							value="{{ skill }}"
+							selected
+						>
+						{{ skill }}
+						{% else %}
+						<option value="{{ skill }}">
+						{{ skill }}
+						{% endif %}
+						</option>
+						{% endfor %}
+					</select>
+					<br />
+					<button class="btn mx-auto mt-4 button-2" type="submit">
+						Filter
+					</button>
+					{% if filtered %}
+					<a href="{% url 'events' %}?clear=1">
+						<button
+							type="button"
+							class="btn btn-md mt-4 mx-auto button-2"
+						>
+							Clear
+						</button>
+					</a>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

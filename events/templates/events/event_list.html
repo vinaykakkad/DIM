@@ -2,7 +2,7 @@
 {% load static %} 
 
 {% block head %}
-<title>Jobs</title>
+<title>Events</title>
 <link rel="stylesheet" href="{% static 'forum/css/forum.css' %}" />
 <link
 	rel="stylesheet"
@@ -13,7 +13,7 @@
 {% endblock %} 
 
 {% block content %}
-<section id="job-body">
+<section id="event-body">
 
     <!-- Div for filter modal -->
 	<div class="container card my-4 shadow rounded">
@@ -55,14 +55,14 @@
 				class="w-100"
 				type="button"
 				data-toggle="modal"
-				data-target="#jobModal"
+				data-target="#eventModal"
 			>
 				<div class="mx-2 w-100 p-3 text-muted start-blog-box">
 					Apply filters...
 				</div>
 			</a>
 			{% if filtered %}
-			<a href="{% url 'jobs' %}?clear=1">
+			<a href="{% url 'events' %}?clear=1">
 				<button
 					type="button"
 					class="btn mx-3 button-2"
@@ -75,22 +75,22 @@
 	</div>
 
     <!-- divs for job posts -->
-	{% for job in page_data %}
+	{% for event in page_data %}
 	<div class="container card mb-4 shadow rounded">
 		<div class="card-body">
-			<h2 class="mb-0 text-first">{{ job.role }} @ {{ job.company }}</h2>
-			<p class="card-text small date">{{ job.posted_on }}</p>
-			<p class="card-text my-4">{{ job.description }}</p>
+			<h2 class="mb-0 text-first">{{ event.title }}</h2>
+			<p class="card-text small date">{{ event.posted_on }}</p>
+			<p class="card-text my-4">{{ event.description }}</p>
 			<div class="row text-center">
-				{% for skill in job.skills.all %}
+				{% for skill in event.skills.all %}
 				<div class="m-2 tag">
-					<a href="{% url 'jobs' %}?tags={{skill}}">#{{skill}}</a>
+					<a href="{% url 'events' %}?tags={{skill}}">#{{skill}}</a>
 				</div>
 				{% endfor %}
 			</div>
 			<hr class="my-3" />
 			<div class="row">
-				<div class="col-8">{{ job.location }} • {{ job.salary }}</div>
+				<div class="col-8">Organization: {{ event.organization }}</div>
 				<div class="col-4 d-flex justify-content-end">
 					<button class="btn button-2">Connect</button>
 				</div>
@@ -100,7 +100,7 @@
 	{% endfor %}
 </section>
 
-{% include 'jobs/job_filter_modal.html'%} 
+{% include 'events/event_filter_modal.html'%} 
 {% include 'pagination.html' %} 
 
 {%endblock%}
