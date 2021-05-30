@@ -6,24 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('courses', '0001_initial'),
+        ("courses", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='fields',
+            name="fields",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Field', models.CharField(max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("Field", models.CharField(max_length=200)),
             ],
         ),
         migrations.RemoveField(
-            model_name='courses',
-            name='Field',
+            model_name="courses",
+            name="Field",
         ),
         migrations.AddField(
-            model_name='courses',
-            name='Field',
-            field=models.ManyToManyField(to='courses.fields'),
+            model_name="courses",
+            name="Field",
+            field=models.ManyToManyField(to="courses.fields"),
         ),
     ]

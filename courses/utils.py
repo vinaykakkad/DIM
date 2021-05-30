@@ -52,9 +52,7 @@ def filter_courses(courses, request):
     # title
     if session["course_title"] is not None:
         filtered = True
-        courses = courses.filter(
-            name__icontains=session["course_title"]
-        )
+        courses = courses.filter(name__icontains=session["course_title"])
 
     # fields
     if session["course_fields"] is not None:

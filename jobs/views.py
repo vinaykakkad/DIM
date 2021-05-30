@@ -5,7 +5,6 @@ from django.shortcuts import redirect, render
 from .models import JobPost, Skill
 from .utils import filter_jobs
 from .forms import JobPostForm
-
 from account.models import Account
 
 
@@ -18,7 +17,7 @@ def user_job_list_view(request):
     # filtering jobs based on request
     jobs, filtered = filter_jobs(jobs, request)
 
-    # filtering out jobs where no. of matching < 3
+    # filtering out jobs where no. of matches < 3
     for job in jobs:
         job_skills = set(job.skills.all())
         count = len(user_skills.intersection(job_skills))

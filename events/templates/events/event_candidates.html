@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block head %}
+<title>Post Candidates</title>
+{% endblock %} 
+
+{% block content %}
+<div class="container my-5 full">
+	<table class="table bg-white table-hover">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Candidate</th>
+				<th scope="col">Profile</th>
+				<th scope="col">Contact</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for expert in experts %}
+			<tr>
+				<th scope="row">{{ forloop.counter }}</th>
+				<td>{{ expert }}</td>
+				<td>
+					<a href="{% url 'profile' expert.username %}">
+						<button class="btn button-2">Profile</button>
+					</a>
+				</td>
+				<td>
+					<a href="https://one-one-chat-3686f.web.app/">
+						<button class="btn button-2">Contact</button>
+					</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}

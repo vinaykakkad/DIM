@@ -15,10 +15,10 @@ def courses_views(request):
     courses = paginator.get_page(page)
 
     context = {
-        'page_data': courses,
-        'fields': fields.objects.all(),
-        'last_page': paginator.num_pages, 
-        'filtered' : filtered
+        "page_data": courses,
+        "fields": fields.objects.all(),
+        "last_page": paginator.num_pages,
+        "filtered": filtered,
     }
-    
-    return render(request, 'courses/courses.html', context)
+
+    return render(request, "courses/courses.html", context)
