@@ -1,0 +1,85 @@
+<div
+	class="modal fade"
+	id="courseModal"
+	tabindex="-1"
+	aria-labelledby="courseModalLabel"
+	aria-hidden="true"
+>
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="courseModalLabel">
+					Create your post
+				</h5>
+				<button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close"
+				>
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form
+					action="{% url 'courses' %}"
+					method="GET"
+					class="form-group"
+					id="filter-form"
+				>
+					<!-- By title -->
+					<label for="title">By title:</label>
+					{% if request.session.course_title %}
+					<input
+						type="text"
+						name="title"
+						value="{{ request.session.course_title }}"
+						class="form-control mb-4 fields"
+					/>
+					{% else %}
+					<input
+						type="text"
+						name="title"
+						class="form-control mb-4 fields"
+					/>
+					{% endif %}
+					<label for="fields">By fields:</label>
+					<select
+						name="fields"
+						class="custom-select form-control fields"
+						multiple
+					>
+						{% for field in fields %}
+                        
+						{% if field.Field in request.session.course_fields %}
+						<option 
+							value="{{ field }}"
+							selected
+						>
+						{{ field }}
+						{% else %}
+						<option value="{{ field }}">
+						{{ field }}
+						{% endif %}
+						</option>
+						{% endfor %}
+					</select>
+					<br />
+					<button class="btn mx-auto mt-4 button-2" type="submit">
+						Filter
+					</button>
+					{% if filtered %}
+					<a href="{% url 'courses' %}?clear=1">
+						<button
+							type="button"
+							class="btn btn-md mt-4 mx-auto button-2"
+						>
+							Clear
+						</button>
+					</a>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
