@@ -15,46 +15,46 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             {% if request.user.is_authenticated %}
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'forum' %}">Forum</a>
+                <a class="nav-link nav-link-class" href="{% url 'forum' %}">🔊Forum</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'courses' %}">Courses</a>
+                <a class="nav-link nav-link-class" href="{% url 'courses' %}">📚Courses</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="https://one-one-chat-3686f.web.app/">Chat</a>
+                <a class="nav-link nav-link-class" href="https://one-one-chat-3686f.web.app/">💬Chat</a>
             </li>
             {% if request.user.completed_profile %}
                 {% if request.user.type == "recruiter" %}
                 <li class="nav-item ">
-                    <a class="nav-link nav-link-class" href="{% url 'recruiter_jobs' %}">Jobs</a>
+                    <a class="nav-link nav-link-class" href="{% url 'recruiter_jobs' %}">💼Jobs</a>
                 </li>
                 {% else %}
                 <li class="nav-item ">
-                    <a class="nav-link nav-link-class" href="{% url 'jobs' %}">Jobs</a>
+                    <a class="nav-link nav-link-class" href="{% url 'jobs' %}">💼Jobs</a>
                 </li>
                 {% endif %}
                 {% if request.user.type == "expert" %}
                 <li class="nav-item ">
-                    <a class="nav-link nav-link-class" href="{% url 'events' %}">Events</a>
+                    <a class="nav-link nav-link-class" href="{% url 'events' %}">👨‍💻Events</a>
                 </li>
                 {% else %}
                 <li class="nav-item ">
-                    <a class="nav-link nav-link-class" href="{% url 'event_posts' %}">Events</a>
+                    <a class="nav-link nav-link-class" href="{% url 'event_posts' %}">👨‍💻Events</a>
                 </li>
                 {% endif %}
             {% endif %}
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'profile' request.user.username %}">Profile</a>
+                <a class="nav-link nav-link-class" href="{% url 'profile' request.user.username %}">👱‍♂️Profile</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link nav-link-class" href="{% url 'logout' %}">🔒Logout</a>
             </li>
             {% else %}
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'login' %}">Login</a>
+                <a class="nav-link nav-link-class" href="{% url 'login' %}">🔐Login</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link nav-link-class" href="{% url 'register' %}">Register</a>
+                <a class="nav-link nav-link-class" href="{% url 'register' %}">👋Register</a>
             </li>
             {% endif %}
         </ul>
