@@ -5,15 +5,14 @@
 		<div class="row w-100">
 			<div class="col-md-4 mt-5 text-left">
 				<p class="footer-headings">Quick Links</p>
-				<a href="{% url 'home' %}">Home</a></br>
+				<a href="{% url 'home' %}">🏠Home</a></br>
 				{% if request.user.is_authenticated %}
-				<a href="{% url 'forum' %}">Forum</a></br>
-				<a href="{% url 'profile' request.user.username %}">Profile</a><br>
-				<a href="#">Jobs</br>
-				<a href="{% url 'logout' %}">Logout</a><br>
+				<a href="{% url 'forum' %}">🔊Forum</a></br>
+				<a href="https://one-one-chat-3686f.web.app/">💬Chat</a><br>
+				<a href="{% url 'logout' %}">🔒Logout</a><br>
 				{% else %}
-				<a href="{% url 'login' %}">Login</a></br>
-				<a href="{% url 'register' %}">Register</a></br>
+				<a href="{% url 'login' %}">🔐Login</a></br>
+				<a href="{% url 'register' %}">👋Register</a></br>
 				{% endif %}
 			</div>
 			<div class="col-md-4 mt-5 text-left">
@@ -22,10 +21,9 @@
 				<a href="#">ENR Group</a></br>
 			</div>
 			<div class="col-md-4 mt-5 text-left">
-				<p class="footer-headings">Credits:</p>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet molestiae excepturi
-					natus quia accusamus inventore ad nam provident! Molestias excepturi odit
-					possimus vitae eaque quis sapiente enim, asperiores optio at!</p>
+				<p class="footer-headings">About:</p>
+				<p>Despite having skills required to fetch a job, many Indian students end-up unemployed mainly due to lack of communication, social and other networking skills necessary for the industry. We are a community working on the solution to this problem.
+				</p>
 			</div>
 			<div class="mt-5 line"></div>
 			<hr>
