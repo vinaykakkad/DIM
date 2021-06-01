@@ -92,9 +92,10 @@
 			<div class="row">
 				<div class="col-8">{{ job.location }} • {{ job.salary }}</div>
 				<div class="col-4 d-flex justify-content-end">
-					<a href="{% url 'profile' job.posted_by.username %}">
-						<button class="btn button-2">Connect</button>
-					</a>
+						<button class="btn button-2">Connect
+							<br>{{job.posted_by}}
+							<br>{{job.posted_by.username}}
+						</button>
 				</div>
 			</div>
 		</div>
