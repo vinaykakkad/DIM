@@ -1,6 +1,6 @@
 # DIM
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 ## Contributors ✨
 
@@ -14,6 +14,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/vinaykakkad"><img src="https://avatars.githubusercontent.com/u/56934712?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vinay Kakkad</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=vinaykakkad" title="Code">💻</a> <a href="https://github.com/vinaykakkad/DIM/commits?author=vinaykakkad" title="Documentation">📖</a> <a href="#design-vinaykakkad" title="Design">🎨</a> <a href="#maintenance-vinaykakkad" title="Maintenance">🚧</a> <a href="#projectManagement-vinaykakkad" title="Project Management">📆</a></td>
     <td align="center"><a href="https://github.com/nipun3333"><img src="https://avatars.githubusercontent.com/u/70288062?v=4?s=100" width="100px;" alt=""/><br /><sub><b>nipun3333</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=nipun3333" title="Code">💻</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/tirth-patel-412b70192"><img src="https://avatars.githubusercontent.com/u/64124305?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tirth Patel</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=tirthPatel177" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Poojan987"><img src="https://avatars.githubusercontent.com/u/59042591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Poojan987</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=Poojan987" title="Code">💻</a></td>
   </tr>
 </table>
 
