@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "vinaykakkad",
+      "name": "Vinay Kakkad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56934712?v=4",
+      "profile": "https://github.com/vinaykakkad",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "DIM",
+  "projectOwner": "vinaykakkad",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
