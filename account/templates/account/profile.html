@@ -21,12 +21,17 @@
         </div>
     {% else %}
     <div class="name-wrapper m-0 p-0 mx-auto text-center">
-        <span class="profile-name m-0 p-0">{{ request.user.fullname }}</span>
+        <span class="profile-name m-0 p-0">{{ profile.user.username }}</span>
     </div>
     <div class="badges-wrapper mx-auto mt-5">
         {% if profile.linkedin_url != '' %}
         <a href="{{ profile.linkedin_url }}" class="mx-3">
             <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkdeIN">
+        </a>
+        {% endif %}
+        {% if request.user != profile.user %}
+        <a href="https://one-one-chat-3686f.web.app/">
+            <button class="btn button-2">Chat</button>
         </a>
         {% endif %}
         {% if profile.github_url != '' %}

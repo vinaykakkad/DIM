@@ -31,7 +31,7 @@ def courses_views(request):
 
 def temp_add(request):
     print(os.getcwd())
-    with open('courses/courses.csv') as csv_file:
+    with open("courses/courses.csv") as csv_file:
 
         courses = csv.reader(csv_file)
         count = 0
@@ -41,7 +41,6 @@ def temp_add(request):
 
             if count == 1:
                 continue
-
 
             current_field = None
             current_course = None
@@ -72,4 +71,4 @@ def temp_add(request):
             new_course.save()
             new_course.Field.add(current_field)
 
-    return redirect('home')
+    return redirect("home")
