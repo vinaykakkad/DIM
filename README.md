@@ -115,6 +115,7 @@ You can register as a user, tech-expert or recruiter
     <td align="center"><a href="https://github.com/Poojan987"><img src="https://avatars.githubusercontent.com/u/59042591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Poojan987</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=Poojan987" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/jinesh0109"><img src="https://avatars.githubusercontent.com/u/70638580?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jinesh Salot</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=jinesh0109" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/RP-72"><img src="https://avatars.githubusercontent.com/u/59957244?v=4?s=100" width="100px;" alt=""/><br /><sub><b>RP-72</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=RP-72" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/YashLongani29"><img src="https://avatars.githubusercontent.com/u/78502794?v=4?s=100" width="100px;" alt=""/><br /><sub><b>YashLongani29</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=YashLongani29" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Hirmay"><img src="https://avatars.githubusercontent.com/u/56473003?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hirmay Sandesara</b></sub></a><br /><a href="https://github.com/vinaykakkad/DIM/commits?author=Hirmay" title="Code">💻</a></td>
   </tr>
 </table>
