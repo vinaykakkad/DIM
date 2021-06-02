@@ -2,22 +2,22 @@
   
 <img src="https://doge-in.herokuapp.com/static/images/logo.png">
   
-</div>  
+</div>
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-
 # DIM Prototype✨
-Prototype made for the course ENR 200 - Design, Innovation and Making
 
+Prototype made for the course ENR 200 - Design, Innovation and Making
 
 ## Demo💻
 
 [Demo](https://doge-in.herokuapp.com/)
 
-  
 ## Environment Variables⚙
 
 To run this project, you will need to add the following environment variables to a .env file at the root of the project
@@ -27,7 +27,6 @@ To run this project, you will need to add the following environment variables to
 - `EMAIL_HOST_PASSWORD` : Password for your smtp email service provder
 
 You can use smtp providers like gmail, sendgrid etc. Update the `EMAIL_HOST` in dim/settings.py accordingly.
-
 
 ## Run Locally🚀
 
@@ -44,6 +43,7 @@ Go to the project directory
 ```
 
 Create Environement and install dependencies
+
 ```bash
 python m venv env
 env\Scripts\activate
@@ -53,12 +53,11 @@ pip install -r requirements.txt
 Make migrations and start the server
 
 ```bash
-  python manage.py makemigrations 
+  python manage.py makemigrations
   python manage.py migrate
   python manage.py runserver
 ```
 
-  
 ## Features🧾
 
 You can register as a user, tech-expert or recruiter
@@ -91,19 +90,18 @@ You can register as a user, tech-expert or recruiter
   - Chat with users, experts and other recruiters
 </details>
 
-
 ## Tech Stack👨‍💻
 
 **Frontend:** HTML, CSS, JS, Bootstrap, React
 
 **Backend:** Django, Firebase
-  
-  
+
 ## License🔐
 
-[MIT](https://github.com/vinaykakkad/DIM/blob/main/LICENSE)  
+[MIT](https://github.com/vinaykakkad/DIM/blob/main/LICENSE)
 
 ## Contributors ✨
+
 [emoji key](https://allcontributors.org/docs/en/emoji-key)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
